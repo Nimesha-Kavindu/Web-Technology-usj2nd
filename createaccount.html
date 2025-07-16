@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Register - Create Account</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "poppins",sans-serif;
+            }
+
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                position: relative;
+                overflow: hidden;
+            }
+
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: 
+                    radial-gradient(circle at 20% 80%, rgba(120, 200, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(120, 200, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.1) 0%, transparent 50%);
+                z-index: 1;
+            }
+
+            body::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: 
+                    linear-gradient(30deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%),
+                    linear-gradient(150deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%),
+                    linear-gradient(240deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%);
+                z-index: 2;
+            }
+
+            .wrapper{
+                width: 420px;
+                background: rgba(255, 255, 255, 0.1);
+                color: #1e40af;
+                border-radius: 20px;
+                padding: 10px 20px;
+                border: 2px solid rgba(59, 130, 246, 0.2);
+                backdrop-filter: blur(25px);
+                box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+                position: relative;
+                z-index: 3;
+            }
+
+            .wrapper h1{
+                font-size: 36px;
+                text-align: center;
+                background: linear-gradient(135deg, #1e40af, #3b82f6);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 10px;
+            }
+
+            .wrapper .input-box{
+                position: relative;
+                width: 100%;
+                height:50px;
+                margin:30px 0;
+            }
+
+            .input-box input {
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                border: none;
+                outline:none;
+                border: 2px solid rgba(59, 130, 246, 0.2);
+                border-radius:40px;
+                color: #1e40af;
+                padding: 20px 45px 20px 20px;
+                font-weight: 500;
+            }
+
+            .input-box input::placeholder{
+                color: rgba(30, 64, 175, 0.7);
+            }
+
+            .input-box input:focus {
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            }
+
+            .input-box i{
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform:translate(-50%);
+                font-size: 20px;
+                color: #3b82f6;
+            }
+
+            .wrapper .terms{
+                display: flex;
+                justify-content: space-around;
+                font-size: 14.5px;
+                margin: -15px 0 15px;
+            }
+
+            .terms label{
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .terms label input{
+                accent-color: #3b82f6;
+                margin-right:3px;
+            }
+
+            .terms a{
+                color: #3b82f6;
+                text-decoration: none;
+            }
+
+            .terms a:hover{
+                text-decoration: underline;
+                color: #1e40af;
+            }
+
+            .wrapper .btn{
+                width: 100%;
+                height: 45px;
+                background: linear-gradient(135deg, #3b82f6, #1e40af);
+                border: none;
+                outline: none;
+                border-radius: 40px;
+                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+                cursor: pointer;
+                font-size: 16px;
+                color: white;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+
+            .wrapper .btn:hover{
+                background: linear-gradient(135deg, #1e40af, #1e3a8a);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            }
+
+            .wrapper .login-link{
+                font-size: 14.5px;
+                text-align: center;
+                margin: 15px 10px 15px;
+            }
+
+            .login-link p a{
+                color: #3b82f6;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .login-link p a:hover{
+                text-decoration: underline;
+                color: #1e40af;
+            }
+
+            .password-requirements {
+                font-size: 12px;
+                color: rgba(30, 64, 175, 0.7);
+                margin-top: -15px;
+                margin-bottom: 15px;
+                padding-left: 20px;
+            }
+
+            .password-requirements ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .password-requirements li {
+                margin: 2px 0;
+            }
+
+            .password-requirements li:before {
+                content: "•";
+                margin-right: 5px;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <form id="registerForm">
+                <h1>Create Account</h1>
+
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name" required>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="email" placeholder="Email Address" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>    
+
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required id="password">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="password-requirements">
+                    <ul>
+                        <li>At least 8 characters long</li>
+                        <li>Contains uppercase and lowercase letters</li>
+                        <li>Contains at least one number</li>
+                    </ul>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Confirm Password" required id="confirmPassword">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>  
+                  
+                <button class="btn" type="submit">Create Account</button>
+
+                <div class="login-link">
+                   <p>Already have an account? <a href="login1.html">Login here</a></p>
+                </div> 
+
+            </form>
+        </div>
+
+        <script>
+            // Basic form validation
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+                
+                if (password.length < 8) {
+                    alert('Password must be at least 8 characters long!');
+                    return;
+                }
+                
+                // If validation passes, you can submit the form or redirect
+                alert('Account created successfully!');
+                // window.location.href = 'index.html'; // Redirect to login page
+            });
+        </script>
+    </body>
+</html>
